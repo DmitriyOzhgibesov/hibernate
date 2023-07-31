@@ -3,9 +3,11 @@ package ru.netology.hibernate.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import lombok.Data;
 @Entity
 @Data
+@IdClass(Person.class)
 public class Persons {
     @Id
     @Column(nullable = false)
@@ -16,13 +18,13 @@ public class Persons {
     @Id
     @Column(nullable = false)
     private int age;
-    @Column(length = 11)
-    private String phone_number;
-    @Column(nullable = false)
-    private String city_of_living;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column( name = "city_of_living", nullable = false)
+    private String cityOfLiving;
 
     @Override
     public String toString() {
-        return String.format("{%s, %s, %d, %s, %s}",name, surname, age, phone_number, city_of_living);
+        return String.format("{%s, %s, %d, %s, %s}",name, surname, age, phoneNumber, cityOfLiving);
     }
 }
